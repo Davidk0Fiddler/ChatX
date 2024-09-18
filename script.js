@@ -39,15 +39,25 @@ loginSubmit.addEventListener("click", login);
 
 function login() {
 
-  let username_checking;
+  let usernameChecking = loginUserName.value;
+  let passwordChecking = loginPassword.value;
+
+  console.log(usernameChecking, passwordChecking)
+
 
   const usersRef = db.collection('users'); 
   usersRef.get()
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      let chekcer = doc.data()
-      console.log(`Dokumentum ID: ${doc.id}`);
-      console.log(chekcer["email"]);
+      let checker = doc.data()
+      //console.log(`Dokumentum ID: ${doc.id}`);
+      //console.log(chekcer["email"]);
+
+      if (usernameChecking == checker["username"] && passwordChecking == checker["password"]) {
+        console.log(usernameChecking, " has logged in!")
+      }
+
+
     })
   })
   .catch((error) => {
