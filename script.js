@@ -37,13 +37,15 @@ const loginSubmit= document.getElementById('login-submit');
 loginSubmit.addEventListener("click", login);
 
 function login() {
-  const dbRef = firebase.database().ref('users'); 
-  dbRef.once('value')
-  .then((snapshot) => {
-    const data = snapshot.val();
-    for (let key in data) {
+  const usersRef = db.collection('users');
+
+// Az összes dokumentum lekérése a kollekcióból
+usersRef.get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      // Minden dokumentum adatai
       console.log(`Dokumentum ID: ${doc.id}, Adatok: `, doc.data());
-    }
+    });
   })
   .catch((error) => {
     console.error("Hiba az adatok lekérésekor: ", error);
