@@ -31,6 +31,9 @@ if (isLoggedIn == false) {
   </div>`
 }
 
+// LOGIN
+
+
 const loginUserName = document.getElementById('login-username');
 const loginPassword = document.getElementById('login-password');
 const loginSubmit= document.getElementById('login-submit');
@@ -55,6 +58,7 @@ function login() {
 
       if (usernameChecking == checker["username"] && passwordChecking == checker["password"]) {
         console.log(usernameChecking, " has logged in!")
+        isLoggedIn = true
       }
 
 
