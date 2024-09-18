@@ -9,8 +9,7 @@ const firebaseConfig = {
   measurementId: "G-C9K9JB7N00"
 };
 
-const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+
 
 
 let isLoggedIn = false
@@ -38,15 +37,18 @@ const loginSubmit= document.getElementById('login-submit');
 loginSubmit.addEventListener("click", login);
 
 function login() {
-  const usersRef = db.collection('users');
 
-// Az összes dokumentum lekérése a kollekcióból
-usersRef.get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      // Minden dokumentum adatai
-      console.log(`Dokumentum ID: ${doc.id}, Adatok: `, doc.data());
-    });
+  let username_checking;
+
+  const dbRef = firebase.database().ref('users'); 
+  dbRef.once('value')
+  .then((snapshot) => {
+    const data = snapshot.val();
+    for (let key in data) {
+      let chekcer = doc.data()
+      console.log(`Dokumentum ID: ${doc.id}`);
+      console.log(chekcer["email"]);
+    }
   })
   .catch((error) => {
     console.error("Hiba az adatok lekérésekor: ", error);
