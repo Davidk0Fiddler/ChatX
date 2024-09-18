@@ -9,7 +9,8 @@ const firebaseConfig = {
   measurementId: "G-C9K9JB7N00"
 };
 
-
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
 
 let isLoggedIn = false
