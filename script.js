@@ -41,15 +41,14 @@ function login() {
 
   let username_checking;
 
-  const dbRef = firebase.database().ref('users'); 
-  dbRef.once('value')
-  .then((snapshot) => {
-    const data = snapshot.val();
-    for (let key in data) {
+  const usersRef = db.collection('users'); 
+  usersRef.get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
       let chekcer = doc.data()
       console.log(`Dokumentum ID: ${doc.id}`);
       console.log(chekcer["email"]);
-    }
+    })
   })
   .catch((error) => {
     console.error("Hiba az adatok lekérésekor: ", error);
