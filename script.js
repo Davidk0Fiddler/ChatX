@@ -94,6 +94,8 @@ function login() {
     alert("A bejelentkezés sikertelen, rendszerhiba miatt: "+ error);
   });
 }
+let loginRegisterBtn = document.getElementById('login-register')
+
 let registerSubmit = document.getElementById('register-submit');
 loginRegisterBtn.addEventListener('click', function(){
   console.log(isRegisterin)
@@ -105,7 +107,6 @@ registerSubmit.addEventListener("click", register);
 
 // REGISTER
 function register(){
-let loginRegisterBtn = document.getElementById('login-register')
 let registerUsername = document.getElementById('register-username')
 let registerEmail = document.getElementById('register-email')
 let registerPassword = document.getElementById('register-password')
