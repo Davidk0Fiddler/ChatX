@@ -94,8 +94,12 @@ function login() {
     alert("A bejelentkezés sikertelen, rendszerhiba miatt: "+ error);
   });
 }
-let registerSubmit = document.getElementById('register-submit')
-
+let registerSubmit = document.getElementById('register-submit');
+loginRegisterBtn.addEventListener('click', function(){
+  console.log(isRegisterin)
+  isRegisterin = true
+  loginregisterPage()
+});
 
 registerSubmit.addEventListener("click", register);
 
@@ -106,12 +110,6 @@ let registerUsername = document.getElementById('register-username')
 let registerEmail = document.getElementById('register-email')
 let registerPassword = document.getElementById('register-password')
 let registerCheckbox = document.getElementById('afsz-checkbox')
-
-loginRegisterBtn.addEventListener('click', function(){
-  console.log(isRegisterin)
-  isRegisterin = true
-  loginregisterPage()
-});
 
 const usersRef = db.collection('users');
 
