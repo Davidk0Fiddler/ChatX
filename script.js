@@ -141,4 +141,4 @@ let dataAlreadyUsed = false
 .catch((error) => {
   console.error('Hiba a regisztráció során: ', error);
 });
-}}
+}
