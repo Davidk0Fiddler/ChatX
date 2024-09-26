@@ -112,7 +112,6 @@ let registerCheckbox = document.getElementById('afsz-checkbox')
 
 const usersRef = db.collection('users');
 
-function register() {
 
 let username = registerUsername.value
 let email = registerEmail.value
