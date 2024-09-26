@@ -120,25 +120,29 @@ let afszElfogado = registerCheckbox.value
 
 let dataAlreadyUsed = false
 
-.then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-    let checker = doc.data()
+async function addData() {
+  try {
+    querySnapshot.forEach((doc) => {
+      let checker = doc.data()
 
-    if (username == checker["username"] || email == checker["email"]) {
-      dataAlreadyUsed = true
-      alert("A regisztráció sikertelen! Valamelyik adatod már használva van a rendszerben!")
-    }
-  })
-  if (dataAlreadyUsed == false && afszElfogado) {
-    usersRef.add({
-      username: username,
+      if (usernameChecking == checker["username"] && passwordChecking == checker["password"]) {
+        dataAlreadyUsed = true
+        console.log("A regisztáció sikertelen, a felhasználói adatok már használatban vannak!")
+      }})
+
+
+    if (afszElfogado == true && dataAlreadyUsed == false){
+    const userRef = await db.collection("data").add ({
+      email: email,
       password: password,
-      email: email
-    })
+      username: username    
+    });
+    console.log('Sikeres regiszrtáció!')
   }
+  } catch (e) {
+    console.error("Hiba az adat hozzáadásakor: ", e);
+  }
+}
 
-})
-.catch((error) => {
-  console.error('Hiba a regisztráció során: ', error);
-});
+addData();
 }
