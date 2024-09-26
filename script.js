@@ -32,6 +32,10 @@ function loginregisterPage() {
       <button id="login-register">Regisztráció</button>
     </div>`
     let loginRegisterBtn = document.getElementById('login-register')
+    loginRegisterBtn.addEventListener('click', function(){
+      isRegisterin = true
+      loginregisterPage()
+    });
 
   }else if(isLoggedIn == false && isRegisterin == true){
     container.innerHTML = ` `
@@ -98,13 +102,6 @@ function login() {
     alert("A bejelentkezés sikertelen, rendszerhiba miatt: "+ error);
   });
 }
-
-
-loginRegisterBtn.addEventListener('click', function(){
-  isRegisterin = true
-  loginregisterPage()
-});
-
 
 // REGISTER
 function register(){
