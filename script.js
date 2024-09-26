@@ -98,12 +98,11 @@ let loginRegisterBtn = document.getElementById('login-register')
 
 let registerSubmit = document.getElementById('register-submit');
 loginRegisterBtn.addEventListener('click', function(){
-  console.log(isRegisterin)
   isRegisterin = true
   loginregisterPage()
 });
-
 registerSubmit.addEventListener("click", register);
+
 
 // REGISTER
 function register(){
@@ -113,6 +112,8 @@ let registerPassword = document.getElementById('register-password')
 let registerCheckbox = document.getElementById('afsz-checkbox')
 
 const usersRef = db.collection('users');
+
+function register() {
 
 let username = registerUsername.value
 let email = registerEmail.value
@@ -142,4 +143,4 @@ let dataAlreadyUsed = false
 .catch((error) => {
   console.error('Hiba a regisztráció során: ', error);
 });
-}
+}}
