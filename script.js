@@ -31,6 +31,8 @@ function loginregisterPage() {
   
       <button id="login-register">Regisztráció</button>
     </div>`
+    let loginRegisterBtn = document.getElementById('login-register')
+
   }else if(isLoggedIn == false && isRegisterin == true){
     container.innerHTML = ` `
     container.innerHTML += `
@@ -46,6 +48,8 @@ function loginregisterPage() {
   
       </div>
     `
+    let registerSubmit = document.getElementById('register-submit');
+    registerSubmit.addEventListener("click", register);
   }
 }
 
@@ -94,14 +98,12 @@ function login() {
     alert("A bejelentkezés sikertelen, rendszerhiba miatt: "+ error);
   });
 }
-let loginRegisterBtn = document.getElementById('login-register')
 
-let registerSubmit = document.getElementById('register-submit');
+
 loginRegisterBtn.addEventListener('click', function(){
   isRegisterin = true
   loginregisterPage()
 });
-registerSubmit.addEventListener("click", register);
 
 
 // REGISTER
