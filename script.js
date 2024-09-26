@@ -110,7 +110,6 @@ let registerEmail = document.getElementById('register-email')
 let registerPassword = document.getElementById('register-password')
 let registerCheckbox = document.getElementById('afsz-checkbox')
 
-const usersRef = db.collection('users');
 
 
 let username = registerUsername.value
@@ -128,21 +127,21 @@ async function addData() {
       if (usernameChecking == checker["username"] && passwordChecking == checker["password"]) {
         dataAlreadyUsed = true
         console.log("A regisztáció sikertelen, a felhasználói adatok már használatban vannak!")
-      }})
+      }
+    })
 
 
     if (afszElfogado == true && dataAlreadyUsed == false){
-    const userRef = await db.collection("data").add ({
-      email: email,
-      password: password,
-      username: username    
-    });
-    console.log('Sikeres regiszrtáció!')
+      const userRef = await db.collection("data").add ({
+        email: email,
+        password: password,
+        username: username    
+      });
+      console.log('Sikeres regiszrtáció!')
+    }
   }
-  } catch (e) {
-    console.error("Hiba az adat hozzáadásakor: ", e);
+  catch (e) {
   }
 }
-
 addData();
 }
